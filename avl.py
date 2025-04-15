@@ -60,10 +60,12 @@ class AVLTree:
             return root
 
     def inorder(self, root):
+        result = []
         if root:
-            yield from self.inorder(root.left)
-            yield root.data
-            yield from self.inorder(root.right)
+            result += self.inorder(root.left)
+            result.append(root.data)
+            result += self.inorder(root.right)
+        return result
 
     def nettoyage(self, root, seuil_minutes):
         if not root:
