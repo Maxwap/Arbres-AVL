@@ -82,8 +82,8 @@ class AVLTree:
 
     def save_to_file(self, root, filename):
         with open(filename, 'w') as f:
-            for conn in self.inorder(root):
-                f.write(f"{conn.ip};{conn.timestamp.isoformat()}\n")
+            for connexion in self.inorder(root):
+                f.write(f"{connexion.ip};{connexion.timestamp.isoformat()}\n")
 
     def load_from_file(self, filename):
         import os
@@ -92,9 +92,9 @@ class AVLTree:
             with open(filename, 'r') as f:
                 for line in f:
                     ip, timestamp = line.strip().split(';')
-                    conn = Connexion(ip)
-                    conn.timestamp = datetime.fromisoformat(timestamp)
-                    root = self.insert(root, conn)
+                    connexion = Connexion(ip)
+                    connexion.timestamp = datetime.fromisoformat(timestamp)
+                    root = self.insert(root, connexion)
         return root
 
     def get_min_node(self, node):
